@@ -9,7 +9,8 @@ ser = SerialPort.new(inputArray)
 thrOut = Thread.new {
   char = "a"
   while(char != EOF){
-    print ser.read
+    char = ser.read
+    print char
   }
 }
 
