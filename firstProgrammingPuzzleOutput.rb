@@ -4,12 +4,12 @@ inputArray = ARGV
 if(inputArray.length != 5){
   raise "Parametres del SerialPort incorrectes"
 }
-ser = SerialPort.new(inputArray(0), inputArray)
+ser = SerialPort.new(inputArray)
 
 thrOut = Thread.new {
   char = "a"
   while(char != EOF){
-    puts ser.read
+    print ser.read
   }
 }
 
