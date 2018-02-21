@@ -31,10 +31,8 @@ thrOut = Thread.new {
 
 #Input loop
 
-char = "a"
+char = STDIN.getc
 while (char != "\cd")
+  serOut.write(char)
   char = STDIN.getc
-  if (char != "\cd") 
-    serOut.write(char)
-  end
 end
