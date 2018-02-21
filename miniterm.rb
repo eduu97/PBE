@@ -1,16 +1,16 @@
-require "SerialPort"
+require 'serialport'
 
 inputArray = ARGV
 if (inputArray.length != 5)
   raise "Parametres del SerialPort incorrectes"
 end
-serOut = SerialPort.new(inputArray)
+serOut = SerialPort.new(inputArray[0], inputArray[1..4])
 
 #Output thread
 
 thrOut = Thread.new {
   char = "a"
-  while (char != EOF)
+  while (char != nil)
     char = serOut.getc
     print char
   end
@@ -19,7 +19,7 @@ thrOut = Thread.new {
 #Input loop
 count = 0
 char = "a"
-while (char != EOF && count < 3)
+while (char != nil and count < 3)
   char = STDIN.getc
   if (char == "$")
     count += 1
