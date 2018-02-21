@@ -18,7 +18,8 @@ thrOut = Thread.new {
 
 #Input loop
 count = 0
-while (char != nil && count < 3)
+char = "a"
+while (char != EOF && count < 3)
   char = STDIN.getc
   if (char == "$")
     count += 1
