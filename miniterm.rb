@@ -1,22 +1,23 @@
 require 'serialport'
 
-inputArray = ARGV
-if (inputArray.length != 5)
+if (ARGV.length != 5)
   raise "Parametres del SerialPort incorrectes"
 end
+
 for i in 1..3
-  inputArray[i]=inputArray[i].to_i
+  ARGV[i]=ARGV[i].to_i
 end
-parity = inputArray[4]
-case parity
+
+case ARGV[4]
   when "E"
-    parity = SerialPort::EVEN
+    ARGV[4] = SerialPort::EVEN
   when "O"
-    parity = SerialPort::ODD
+    ARGV[4] = SerialPort::ODD
   else
-    parity = SerialPort::NONE
+    ARGV[4] = SerialPort::NONE
 end
-serOut = SerialPort.new(inputArray[0], inputArray[1], inputArray[2], inputArray[3], parity)
+
+serOut = SerialPort.new(ARGV[0], *ARGV[1])
 
 #Output thread
 
