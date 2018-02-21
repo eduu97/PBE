@@ -4,7 +4,14 @@ inputArray = ARGV
 if (inputArray.length != 5)
   raise "Parametres del SerialPort incorrectes"
 end
-serOut = SerialPort.new(inputArray[0], inputArray[1..4])
+baud_rate = inputArray[1].to_i
+data_bits = inputArray[2].to_i
+stop_bits = inputArray[3].to_i
+parity = SerialPort::NONE
+if (parity != 'N')
+ parity = inputArray[4].to_i
+end
+serOut = SerialPort.new(inputArray[0], baud_rate, data_bits, stop_bits, parity)
 
 #Output thread
 
@@ -17,17 +24,8 @@ thrOut = Thread.new {
 }
 
 #Input loop
-count = 0
 char = "a"
-while (char != nil and count < 3)
+while (char != nil and char != '^D')
   char = STDIN.getc
-  if (char == "$")
-    count += 1
-  else
-    count = 0
-  end
   serOut.write(char)
 end
-
-#End of output thread
-thrOut.join
