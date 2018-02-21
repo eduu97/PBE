@@ -22,10 +22,10 @@ serOut = SerialPort.new(ARGV[0], *ARGV[1])
 #Output thread
 
 thrOut = Thread.new {
-  char = "a"
+  char = serOut.getc
   while (char != nil)
-    char = serOut.getc
     print char
+    char = serOut.getc
   end
 }
 
