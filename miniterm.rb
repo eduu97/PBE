@@ -4,9 +4,9 @@ inputArray = ARGV
 if (inputArray.length != 5)
   raise "Parametres del SerialPort incorrectes"
 end
-baud_rate = inputArray[1].to_i
-data_bits = inputArray[2].to_i
-stop_bits = inputArray[3].to_i
+for i in 1..3
+  inputArray[i]=inputArray[i].to_i
+end
 parity = SerialPort::NONE
 if (parity != 'N')
  parity = inputArray[4].to_i
