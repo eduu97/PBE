@@ -10,17 +10,20 @@ serOut = SerialPort.new(inputArray)
 
 thrOut = Thread.new {
   char = "a"
-  while (char != EOF) 
+  while (char != EOF)
     char = serOut.getc
     print char
   end
 }
 
 #Input loop
+count = 0
 while (char != nil && count < 3)
   char = STDIN.getc
-  if (char == "&")
-    count++;
+  if (char == "$")
+    count += 1
+  else
+    count = 0
   end
   serOut.write(char)
 end
