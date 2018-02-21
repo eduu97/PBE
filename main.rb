@@ -6,10 +6,14 @@ output_thread = Thread.new{output()}
 
 #Input goes here
 
-teclado = gets(nil)
-aux = open('RUTA SERIAL PORT', 'w') { |f|
-  f << teclado
-}
+count=0;
+while(char!=nil && count<3)
+  char = STDIN.getch
+  if(char=="&")
+    count++;
+  end
+  ser.write(char)
+end
 
 #End of output thread
 output_thread.join
