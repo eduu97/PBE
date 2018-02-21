@@ -9,7 +9,7 @@ output_thread = Thread.new{output()}
 count=0;
 while(char!=nil && count<3)
   char = STDIN.getch
-  if(char=="&")
+  if(char=="$")
     count++;
   end
   ser.write(char)
