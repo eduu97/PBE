@@ -7,11 +7,16 @@ end
 for i in 1..3
   inputArray[i]=inputArray[i].to_i
 end
-parity = SerialPort::NONE
-if (parity != 'N')
- parity = inputArray[4].to_i
+parity = inputArray[4]
+case parity
+  when "E"
+    parity = SerialPort::EVEN
+  when "O"
+    parity = SerialPort::ODD
+  else
+    parity = SerialPort::NONE
 end
-serOut = SerialPort.new(inputArray[0], baud_rate, data_bits, stop_bits, parity)
+serOut = SerialPort.new(inputArray[0], inputArray[1], inputArray[2], inputArray[3], parity)
 
 #Output thread
 
@@ -24,8 +29,11 @@ thrOut = Thread.new {
 }
 
 #Input loop
+
 char = "a"
-while (char != nil and char != '^D')
+while (char != "\cd")
   char = STDIN.getc
-  serOut.write(char)
+  if (char != "\cd") 
+    serOut.write(char)
+  end
 end
