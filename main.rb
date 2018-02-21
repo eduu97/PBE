@@ -8,7 +8,7 @@ output_thread = Thread.new{output()}
 
 count=0;
 while(char!=nil && count<3)
-  char = STDIN.getch
+  char = STDIN.getc
   if(char=="$")
     count++;
   end
