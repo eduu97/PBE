@@ -18,6 +18,7 @@ end
 
 sp = SerialPort.new(ARGV[0], ARGV[1].to_i, ARGV[2].to_i, ARGV[3].to_i, parity)
 
+STDOUT.sync = true
 Thread.new{
 	while (true) do
 		STDOUT.putc(sp.getc)
@@ -28,3 +29,4 @@ while ((char = STDIN.getc) != ?\C-D) do
 	sp.putc(char)
 end
 
+sp.close
