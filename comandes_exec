@@ -1,0 +1,32 @@
+Obrir 3 terminals diferents
+
+Terminal 1:
+	crear els ports
+
+	$	socat -d -d pty,raw,echo=0 pty,raw,echo=0
+
+	2018/02/22 11:46:28 socat[2148] N PTY is /dev/pts/4
+	2018/02/22 11:46:28 socat[2148] N PTY is /dev/pts/20
+	2018/02/22 11:46:28 socat[2148] N starting data transfer loop with FDs [5,5] and [7,7]
+
+
+	Mirar les sortides dels /dev/pts/...	que son les sortides dels ports creats
+
+	canviar sortides al miniterm.sh
+
+		ruby miniterm.rb /dev/pts/4 9600 8 1 N
+	
+	canviar sortides al miniterm2.sh
+		
+		ruby miniterm.rb /dev/pts/20 9600 8 1 N
+
+Terminal 2:
+
+	$	sh miniterm.sh
+	
+Terminal 3:
+
+	$	sh miniterm2.sh
+
+
+
