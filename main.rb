@@ -5,6 +5,7 @@ end
 output_thread = Thread.new{output()}
 
 #Input goes here
+#Test
 
 count=0;
 while(char!=nil && count<3)
