@@ -1,6 +1,3 @@
 # first_puzzle
-Codi del primer puzzle. Input, output, threads and STTY
-
-Provat ctrl + enter per passar de linia
-
+Codi de PBE grup 4
 Usar ruby2.1
