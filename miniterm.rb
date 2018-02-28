@@ -8,13 +8,13 @@ for i in 1..3
   ARGV[i]=ARGV[i].to_i
 end
 
-case ARGV[4]
+ARGV[4] = case ARGV[4]
   when "E"
-    ARGV[4] = SerialPort::EVEN
+    SerialPort::EVEN
   when "O"
-    ARGV[4] = SerialPort::ODD
-  else
-    ARGV[4] = SerialPort::NONE
+    SerialPort::ODD
+  when "N"
+    SerialPort::NONE
 end
 
 serOut = SerialPort.new(ARGV[0], *ARGV[1])
