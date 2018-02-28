@@ -27,6 +27,7 @@ thrOut = Thread.new {
 }
 
 #Input loop
+#Try ctrl+enter to end line
 while ((char = STDIN.getc) != "\cd")
   serOut.write(char)
 end
