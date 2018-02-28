@@ -20,7 +20,6 @@ end
 serOut = SerialPort.new(ARGV[0], *ARGV[1])
 
 #Output thread
-
 thrOut = Thread.new {
   char = serOut.getc
   while (char != nil)
@@ -30,7 +29,6 @@ thrOut = Thread.new {
 }
 
 #Input loop
-
 char = STDIN.getc
 while (char != "\cd")
   serOut.write(char)
