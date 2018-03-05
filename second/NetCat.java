@@ -32,9 +32,20 @@ public class NetCat {
                 s.getOutputStream().write(b);
             }
             s.close();
-        } catch (IOException e){
+        } catch (IOException ex){
             System.err.println("Error in input");
         } 
+        /*alternativament
+        try {            
+            PrintWriter writer = new PrintWriter(s.getOutputStream());
+            Scanner scanner = new Scanner(System.in);
+            while (scanner.hasNext()) {
+                writer.print(scanner.next().charAt(0));
+            }
+            s.close();
+        } catch (IOException ex) {
+            System.err.println("Error in input");
+        }*/
     }
     
     public static void main(String args[]) throws IOException {
