@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author tomas.ortega
- */
-
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
 public class NetCat {
     
@@ -18,15 +8,29 @@ public class NetCat {
         
         //output thread
         new Thread() {
-            @Override
             public void run() {
                 //Output
+                /*try {
+                  Scanner scanout = new Scanner(s.getInputStream());
+                  while(true) System.out.println(s.getInputStream().read());
+                } catch (IOException ex) {
+                  System.err.println("Error in output");
+                }*/    
+                try {
+                  Scanner scanout = new Scanner(s.getInputStream());
+                  PrintWriter writeout = new PrintWriter(System.out);
+                  while (scanout.hasNext()) {
+                    writeout.print(scanout.next().charAt(0));
+                  }
+                } catch (IOException ex) {
+                  System.err.println("Error in output");
+                }             
             }
         }.start();
         
         //Input. tancar el socket en escriptura quan
         // es tanqui el teclat
-        try {
+        /*try {
             int b;
             while ((b = System.in.read()) != -1) {
                 s.getOutputStream().write(b);
@@ -34,8 +38,7 @@ public class NetCat {
             s.close();
         } catch (IOException ex){
             System.err.println("Error in input");
-        } 
-        /*alternativament
+        } */
         try {            
             PrintWriter writer = new PrintWriter(s.getOutputStream());
             Scanner scanner = new Scanner(System.in);
@@ -45,7 +48,7 @@ public class NetCat {
             s.close();
         } catch (IOException ex) {
             System.err.println("Error in input");
-        }*/
+        }
     }
     
     public static void main(String args[]) throws IOException {
@@ -54,6 +57,9 @@ public class NetCat {
             
             Socket s = ss.accept();
             link(s);
+            
+            ss.close();
+            
         } else { //client
             Socket s = new Socket(args[0], Integer.parseInt(args[1]));
             link(s);
