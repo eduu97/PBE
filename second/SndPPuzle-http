@@ -1,0 +1,28 @@
+SndPPuzle-http
+
+HTTP significa Protocolo de transferencia de hipertexto. Es el protocolo de red utilizado 
+para entregar recursos. Ya sean archivos HTML, archivos de imágenes, resultados de 
+consultas o cualquier otra cosa. Por lo general, HTTP se lleva a cabo a través de sockets TCP / IP.
+Un cliente porque envía una solicitud a un servidor HTTP (servidor web), que luego envía 
+respuestas al cliente. El puerto estándar para que los servidores HTTP escuchen es de 80, 
+aunque pueden usar cualquier puerto.
+La estructura de las transacciones HTTP usa el modelo de cliente-servidor. El formato de 
+los mensajes sigue una topología especifica: una línea de encabezado (diferente para 
+solicitud que para respuesta), cero o más líneas de encabezado, una línea en blanco (es 
+decir, un CRLF en sí mismo), y un cuerpo de mensaje opcional.
+Las líneas de encabezado proporcionan información sobre la solicitud o respuesta, o sobre 
+el objeto enviado en el cuerpo del mensaje.
+El cuerpo del mensaje es el lugar donde se escriben los datos a enviar. En una respuesta, 
+es donde se devuelve el recurso solicitado al cliente o tal vez texto explicativo si hay un 
+error. En una solicitud, aquí es donde los datos ingresados por el usuario o los archivos 
+cargados se envían al servidor. Si un mensaje HTTP incluye un cuerpo, generalmente hay 
+líneas de encabezado en el mensaje que describen el cuerpo.
+Existen muchos métodos en HTTP a parte del GET. Algunos de los más importantes son 
+el HEAD o el POST. El método POST el servidor que devuelva solo los encabezados de 
+respuesta, y no el recurso real es decir, ningún cuerpo del mensaje. Esto es útil para 
+verificar las características de un recurso sin descargarlo realmente, lo que permite 
+ahorrar ancho de banda. El método POST se utiliza para enviar datos al servidor para que 
+se procesen de alguna manera. Dichos de otra forma no espera una recepción de datos como 
+respuesta si no un mensaje de salida de programa. 
+Un proxy HTTP es un programa que actúa como intermediario entre un cliente y un servidor. 
+Los proxies se usan comúnmente en cortafuegos, para cachés de LAN en general, o en otras situaciones.
