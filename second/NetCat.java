@@ -22,13 +22,10 @@ public class NetCat {
     
     public static void main(String args[]) throws IOException {
         if (args[0].equals("-l")) { //server
-            ServerSocket ss = new ServerSocket(Integer.parseInt(args[1]));
-            
+            ServerSocket ss = new ServerSocket(Integer.parseInt(args[1]));            
             Socket s = ss.accept();
-            link(s);
-            
-            ss.close();
-            
+            link(s);            
+            ss.close();            
         } else { //client
             Socket s = new Socket(args[0], Integer.parseInt(args[1]));
             link(s);
