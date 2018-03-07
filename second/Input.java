@@ -6,7 +6,7 @@ public class Input {
         try {   
           int b;
           while ((b = System.in.read()) != -1) s.getOutputStream().write(b);
-          s.close();
+          s.shutdownInput();
         } catch (IOException ex){
             System.err.println("Error in input");
         }
