@@ -9,6 +9,7 @@ public class Output {
       while ((b = s.getInputStream().read()) != -1) System.out.print((char) b);
     } catch (IOException ex) {
       System.err.println("Error in output");
+      ex.printStackTrace();
     }
   }       
 }

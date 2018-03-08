@@ -9,6 +9,7 @@ public class Input {
           s.shutdownInput();
         } catch (IOException ex){
             System.err.println("Error in input");
+            ex.printStackTrace();
         }
     }
 }
