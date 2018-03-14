@@ -15,7 +15,7 @@ public class NetCat {
         // Input function     
         try {
             Input.start(s);
-            s.shutdownOutput();
+            s.shutdownInput();
         } catch(IOException ex){
             System.err.println("Error in input");
         }
