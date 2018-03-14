@@ -1,0 +1,16 @@
+HTTP
+Escriure un mal programa de red implica fer perdre els recursos d’altres persones.
+HTTP és Hypertext Transfer Protocol i és el protocol red que s’utilitza per a l’intercanvi de dades, anomenat recursos, mitjançant TCP/IP sockets. 
+El model que s’utilitza és el de client-server model: El client obre una connexió i envia un request message al servidor HTTP, el servidor retorna un response message on hi ha els recursos demanats i després tanca la connexió, cosa que fa que HTTP sigui un protocol sense estat. El port estàndard és el 80, però es pot utilitzar qualsevol altre.
+El format que s’utilitza és el següent: Initial Request/Response Line (diferent per request o response), cap o més Header Lines, una línia en blanc i un missatge opcional com a cos (on hi ha les dades). Aquestes línies han d’acabar amb CRLF (Carriage return, Line feed). 
+•	Initial Request Line: consisteix del mètode, la direcció i la versió d’HTTP usada.		      ( GET	/path/to/file/index.html     HTTP/1.0)
+•	Initial Response Line (Status Line): consisteix de la versió HTTP, response status code (entendible per al ordinador) i la frase descrivint el status code (entendible per als humans). Els Status codes és un dígit de 3 xifres, on 1xx indica informació, 2xx indica èxit, 3xx redirigeix el client a una altra URL, 4xx indica error a la part del client i 5xx indica error a la part del server.	 (HTTP/1.0     404     Not Found)
+•	Header Lines: donen informació sobre el request o response. Segueixen una estructura de “Header-Name: value” i donen informació de qui fa el request (From: email adress), el programa que fa el request (User-Agent: Mozilla). Per tant serveix per aclarir els problemes als webmasters i donen informació de l’usuari, amb la qual s’ha de filtrar. 
+•	Message Body: és on es troba tota la informació.
+Mètodes més usats:
+•	GET: permet al client rebre les dades que ha demanat.
+•	HEAD: permet al client rebre informació sobre l’entitat. És com el GET, però només retorna response headers. Per tant, la resposta mai tornara un Message Body.
+•	POST: serveix per enviar dades al servidor.
+•	DELETE: sol•licita al servidor que elimini els recursos. 
+HTTP Proxies
+És un programa que fa d’intermediari entre el client i el servidor, rep les sol•licituds dels clients i les envia als servidors. Les respostes passen pel mateix camí, per tant té funcions de client i servidor. Normalment s’utilitzen com ha firewalls. 
