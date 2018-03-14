@@ -8,17 +8,26 @@ public class NetCat {
         // Output thread
         new Thread() {
             public void run() {
-                Output.start(s);                            
+                int b;
+                try{
+                    InputStream in = s.getInputStream();
+                    while((b = in.read()) != -1)
+                        System.out.write(b);
+                    System.out.println("Server closed Connection");
+                    System.out.close();
+                } catch (IOException e){}
             }
         }.start();
         
-        // Input function     
+        // Input function 
+        int b;    
         try {
-            Input.start(s);
-            s.shutdownInput();
-        } catch(IOException ex){
-            System.err.println("Error in input");
-        }
+            OutputStream out = s.getOutputStream();
+            while((b = System.in.read()) != -1){
+                out.write(b);
+            }
+            s.shutdownOutput();
+        } catch(IOException e){}
     }
     
     public static void main(String args[]) throws IOException {
