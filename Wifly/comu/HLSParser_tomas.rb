@@ -25,7 +25,7 @@ sp = SerialPort.new(port, 9600, 8, 1, SerialPort::NONE)
 #Pas 2: Get de la master playlist de path
 #Pas 3: Implementar l'algorisme de  HLS i imprimir els fitxers per consola
 
-#Pas 1.1 posem wifly mode comandes, no usem un expect perque no volem ficar \r
+#Pas 1.1 posem wifly mode comandes, no usem un command perque no volem ficar \r
 sp.print('$$$')
 sp.expect('CMD')
 
