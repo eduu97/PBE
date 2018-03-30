@@ -65,11 +65,15 @@ serial.expect('CMD')
 
 
 ipDir = ARGV[0].host
+tmp_SSID = #SSID de lab de PBE
+contra = '1234567890'
 
 #Conectar WIFLY al server
 command('set ip host ' + ipDir , 'AOK')  # ip del server
 command('set ip remote 80', 'AOK')  # port del server
 command('set ip protocol 18', 'AOK')  # HTTP client TCP client i server
+command('set wlan ssid' + tmp_SSID, 'AOK')
+command('set wlan pass' + contra, 'AOK')
 command('save', 'AOK')
 
 #Salir del modo comandes
