@@ -8,14 +8,14 @@ end
 
 def readPag(seg_tmp) #Esta parte no la entiendo del todo bien porque me la he mirado de lo que paso Luis
 	for linea in string.split('\n')
-	    case '#EXT-X-STREAM-INF' in seg_tmp
-	     when (linea = '/lo/pro')
+	   case '#EXT-X-STREAM-INF' in seg_tmp
+	   when (linea = '/lo/pro')
 		dicc_seq['lo']['BANDWIDTH'] = string.split('\n')[i-1].split('BANDWIDTH=')[1].split(',')[0]
                 dicc_seq['lo']['url_playlist'] = linea
-            when (linea = '/me/pro')
+           when (linea = '/me/pro')
             	icc_seq['me']['BANDWIDTH'] = string.split('\n')[i - 1].split('BANDWIDTH=')[1].split(',')[0]
                 dicc_seq['me']['url_playlist'] = linea
-            when (linea = '/hi/pro')
+           when (linea = '/hi/pro')
             	icc_seq['hi']['BANDWIDTH'] = string.split('\n')[i - 1].split('BANDWIDTH=')[1].split(',')[0]
                 dicc_seq['hi']['url_playlist'] = linea
 		end
