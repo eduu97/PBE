@@ -1,1 +1,7 @@
-
+#EXTM3U
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=296476,CODECS="mp4a.40.5, avc1.4d401e"
+http://192.168.1.100/Justice-dance/lo/prog_index_loc.m3u8
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1041881,CODECS="mp4a.40.2, avc1.42e015"
+http://192.168.1.100/Justice-dance/me/prog_index_loc.m3u8
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2848094,CODECS="mp4a.40.2, avc1.4d401e"
+http://192.168.1.100/Justice-dance/hi/prog_index_loc.m3u8
