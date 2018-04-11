@@ -2,26 +2,25 @@ require 'expect'
 require 'uri'
 require 'serialport'
 
-#Faig que la uri per defecte sigui la del exercici
-if (ARGV.length < 1)
+if (ARGV.length < 1) #Per la uri es la del exercici
     uri = URI('http://192.168.1.100/Justice-dance/hls_localhost.m3u8')
 else
     uri = URI(ARGV[0])
 end
+
 ip = uri.host
 url = uri.path
 port = '/dev/ttyUSB0'
 $sp = SerialPort.new(port, 9600, 8, 1, SerialPort::NONE)
 $sp.sync = true #per evitar haver de fer flush
 
-def command(comm, resp)
-    #s'envia la commanda comm des del port serie (acabada en \r) i llegeix la re$sposta textual del wifly acabada en el string re$sp
+def command(comm, resp) #s'envia la commanda comm des del port serie (acabada en \r) i llegeix la re$sposta textual del wifly acabada en el string resp
     $sp.write(comm + "\r")
     $sp.expect(resp)
 end
 
-def modeComandes
-  $sp.write('$$$') #per entrar en mode comandes
+def modeComandes #Per entrar en mode comandes
+  $sp.write('$$$') #no usem un command perque no volem ficar \r
   $sp.expect('CMD')
 end
 
@@ -32,30 +31,36 @@ def confWifly
   command('set option format 1', 'AOK') #mostra per pantalla tant bon punt arriba el header HTML
 end
 
-def getList(ip, url) #Per cridar-lo has d'estar en mode comandes
+def getList(ip, url) #Per cridar-lo has d'estar en mode comandes, quan acaba surt del mode comandes
   command('set com remote GET$' + url, 'AOK') #fem get de la direccio que volem
   $sp.write('open ' + ip + ' 80' + "\r")
   return $sp.expect('*CLOS*') #esperem a close per a llegir les dades
 end
 
-#Pas 1.1 posem wifly mode comandes, no usem un command perque no volem ficar \r
-modeComandes
+
+modeComandes #Posem wifly mode comandes
 puts 'Hem entrat a mode comandes'
-confWifly
+confWifly #Configurem les opcions del Wifly
 puts 'Wifly configurat'
 master = getList(ip, url)
 puts 'Hem obtingut master playlist'
-playlists = (master.to_s).scan(/http\S+.m3u8/)
+plBW = (master.to_s).scan(/BANDWIDTH=\d+/)
+for bw in plBW
+    bw.sub('BANDWIDTH=','')
+end
+masterpl = (master.to_s).scan(/http\S+.m3u8/)
+npl = plBW.length
+subpl = Array.new(npl)
 
-for play in playlists
-  puts 'Llegint de ' + play
+for i in 0..npl
+  puts 'Llegint de ' + masterpl(i) + ', amb BW ' + plBW(i)
   modeComandes
-  list = getList(ip, URI(play).path)
-  puts list.to_s
+  list = getList(ip, URI(masterpl(i)).path)
+  subpl(i) = list.to_s
+  puts (subpl(i).to_s).scan(/DURATION:\d+/).to_s #durada en segments de la subplaylist
 end
 
 
-#matches = /BANDWIDTH=\d+/.match(master.to_s).to_a;
 #Interesting links, rubular es per regex
 
 #http://ruby-doc.org/stdlib-2.1.1/libdoc/uri/rdoc/URI.html
