@@ -40,17 +40,23 @@ end
 
 #Pas 1.1 posem wifly mode comandes, no usem un command perque no volem ficar \r
 modeComandes
+puts 'Hem entrat a mode comandes'
 confWifly
+puts 'Wifly configurat'
 master = getList(ip, url)
-#separar master en petites
-#fer for per cada petita llista i fer getlist 
+puts 'Hem obtingut master playlist'
+playlists = (master.to_s).scan(/http\S+.m3u8/)
+
+for play in playlists
+  puts 'Llegint de ' + play
+  modeComandes
+  list = getList(ip, URI(play).path)
+  puts list.to_s
+end
 
 
-
-
-
-
-#Interesting links
+#matches = /BANDWIDTH=\d+/.match(master.to_s).to_a;
+#Interesting links, rubular es per regex
 
 #http://ruby-doc.org/stdlib-2.1.1/libdoc/uri/rdoc/URI.html
 #https://en.wikipedia.org/wiki/Netcat
@@ -59,6 +65,8 @@ master = getList(ip, url)
 #https://en.wikipedia.org/wiki/Expect
 #http://atenea.upc.edu/pluginfile.php/2288614/mod_resource/content/1/draft-pantos-http-live-streaming-11.pdf
 #http://atenea.upc.edu/pluginfile.php/2288615/mod_resource/content/2/microchip-wifly-command-reference.pdf
-
+#http://rubular.com/
 #http://192.168.1.100/Justice-dance/hi/prog_index_loc.m3u8
 #http://192.168.1.100/Justice-dance/hls_localhost.m3u8
+
+
