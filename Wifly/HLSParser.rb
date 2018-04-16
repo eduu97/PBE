@@ -37,29 +37,31 @@ def getList(ip, url) #Per cridar-lo has d'estar en mode comandes, quan acaba sur
   return $sp.expect('*CLOS*') #esperem a close per a llegir les dades
 end
 
+def processMaster(master)
+    plBW = (master.to_s).scan(/BANDWIDTH=\d+/)
+    for bw in plBW
+        bw.sub('BANDWIDTH=','')
+    end
+    masterpl = (master.to_s).scan(/http\S+.m3u8/)
+    npl = plBW.length
+    subpl = Array.new(npl)
+    for i in 0..npl
+      puts 'Llegint de ' + masterpl(i) + ', amb BW ' + plBW(i)
+      modeComandes
+      list = getList(ip, URI(masterpl(i)).path)
+      subpl(i) = list.to_s
+      puts (subpl(i).to_s).scan(/DURATION:\d+/).to_s #durada en segments de la subplaylist
+    end
+end
 
 modeComandes #Posem wifly mode comandes
 puts 'Hem entrat a mode comandes'
 confWifly #Configurem les opcions del Wifly
 puts 'Wifly configurat'
-master = getList(ip, url)
-puts 'Hem obtingut master playlist'
-plBW = (master.to_s).scan(/BANDWIDTH=\d+/)
-for bw in plBW
-    bw.sub('BANDWIDTH=','')
-end
-masterpl = (master.to_s).scan(/http\S+.m3u8/)
-npl = plBW.length
-subpl = Array.new(npl)
-
-for i in 0..npl
-  puts 'Llegint de ' + masterpl(i) + ', amb BW ' + plBW(i)
-  modeComandes
-  list = getList(ip, URI(masterpl(i)).path)
-  subpl(i) = list.to_s
-  puts (subpl(i).to_s).scan(/DURATION:\d+/).to_s #durada en segments de la subplaylist
-end
-
+master = getList(ip, url) #Obtenim la playlist de la direccio donada
+puts 'Master playlist obtinguda'
+processMaster(master) #Obtenim les dades necessaries per HLS
+puts 'Master playlist processada'
 
 #Interesting links, rubular es per regex
 
