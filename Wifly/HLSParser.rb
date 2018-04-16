@@ -20,21 +20,21 @@ def command(comm, resp) #s'envia la commanda comm des del port serie (acabada en
 end
 
 def modeComandes #Per entrar en mode comandes
-  $sp.write('$$$') #no usem un command perque no volem ficar \r
-  $sp.expect('CMD')
+    $sp.write('$$$') #no usem un command perque no volem ficar \r
+    $sp.expect('CMD')
 end
 
 def confWifly
-  command('set wlan ext_antenna 1', 'AOK') #per usar l'antena externa
-  command('join PBE', 'IP') #per connectarnos a la xarxa de PBE, esperem al tag del IP
-  command('set ip proto 24', 'AOK') #per posar mode HTTP + TCP client
-  command('set option format 1', 'AOK') #mostra per pantalla tant bon punt arriba el header HTML
+    command('set wlan ext_antenna 1', 'AOK') #per usar l'antena externa
+    command('join PBE', 'IP') #per connectarnos a la xarxa de PBE, esperem al tag del IP
+    command('set ip proto 24', 'AOK') #per posar mode HTTP + TCP client
+    command('set option format 1', 'AOK') #mostra per pantalla tant bon punt arriba el header HTML
 end
 
 def getList(ip, url) #Per cridar-lo has d'estar en mode comandes, quan acaba surt del mode comandes
-  command('set com remote GET$' + url, 'AOK') #fem get de la direccio que volem
-  $sp.write('open ' + ip + ' 80' + "\r")
-  return $sp.expect('*CLOS*') #esperem a close per a llegir les dades
+    command('set com remote GET$' + url, 'AOK') #fem get de la direccio que volem
+    $sp.write('open ' + ip + ' 80' + "\r")
+    return $sp.expect('*CLOS*') #esperem a close per a llegir les dades
 end
 
 def processMaster(master)
