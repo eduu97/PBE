@@ -5,3 +5,16 @@ http://192.168.1.100/Justice-dance/lo/prog_index_loc.m3u8
 http://192.168.1.100/Justice-dance/me/prog_index_loc.m3u8
 #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2848094,CODECS="mp4a.40.2, avc1.4d401e"
 http://192.168.1.100/Justice-dance/hi/prog_index_loc.m3u8
+
+Interesting links, rubular es per regex
+
+http://ruby-doc.org/stdlib-2.1.1/libdoc/uri/rdoc/URI.html
+https://en.wikipedia.org/wiki/Netcat
+http://ruby-doc.org/stdlib-2.5.0/libdoc/pty/rdoc/IO.html#method-i-expect
+https://en.wikipedia.org/wiki/HTTP_Live_Streaming
+https://en.wikipedia.org/wiki/Expect
+http://atenea.upc.edu/pluginfile.php/2288614/mod_resource/content/1/draft-pantos-http-live-streaming-11.pdf
+http://atenea.upc.edu/pluginfile.php/2288615/mod_resource/content/2/microchip-wifly-command-reference.pdf
+http://rubular.com/
+http://192.168.1.100/Justice-dance/hi/prog_index_loc.m3u8
+http://192.168.1.100/Justice-dance/hls_localhost.m3u8
