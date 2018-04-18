@@ -1,0 +1,1 @@
+Usar scanner per expect
