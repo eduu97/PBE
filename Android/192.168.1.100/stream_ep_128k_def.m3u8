@@ -1,0 +1,8 @@
+#EXTM3U
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="hi",NAME="Main", \
+DEFAULT=YES,URI="hi-audio-video.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="mid",NAME="Main", \
+DEFAULT=YES,URI="mid-audio-video.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="low",NAME="Main", \
+DEFAULT=YES,URI="low-audio-video.m3u8"
+#EXT-X-ENDLIST

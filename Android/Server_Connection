@@ -1,0 +1,10 @@
+Crear un Server i accedir als arxius. Primer cal estar al directori.
+
+ruby -run -ehttpd -- -p 8080 192.168.1.100/
+
+obrim un altre terminal
+
+nc localhost 8080
+GET /stream_ep_128k_def.m3u8 HTTP/1.0 
+enter i CTRL+M o al reves
+
