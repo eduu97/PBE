@@ -54,9 +54,9 @@ public class BrowseActivity extends AppCompatActivity {
         @SuppressWarnings("deprecation")
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.contains("m3u8")) {
+            if (url.endsWith("m3u8")) {
                 Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
-                intent.putExtra("url" , url);
+                intent.putExtra("uri" , url);
                 startActivity(intent);
                 return true;
             }
