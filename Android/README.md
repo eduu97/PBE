@@ -1,1 +1,1 @@
-Usar scanner per expect
+https://google-developer-training.gitbooks.io/android-developer-advanced-course-practicals/unit-5-advanced-graphics-and-views/lesson-13-media/13-1-p-playing-video-with-videoview/13-1-p-playing-video-with-videoview.html
