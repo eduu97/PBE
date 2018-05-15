@@ -1,4 +1,4 @@
-package ortega.tomas.hlstream;
+package grup4.pbe.hlsparser;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +20,7 @@ public class BrowseActivity extends AppCompatActivity {
         public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
             if (textView == barraURL && actionId == EditorInfo.IME_ACTION_GO) {
                 String inputBarra = barraURL.getText().toString();
+                if (inputBarra.isEmpty()) inputBarra = "192.168.1.100";
                 if (!inputBarra.startsWith("http://")) inputBarra = "http://" + inputBarra;
                 webView.loadUrl(inputBarra);
                 return true;
